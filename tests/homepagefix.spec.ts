@@ -8,9 +8,9 @@ import { LoginPage } from '../src/pages/LoginPage';
 
 //hooks:
 test.beforeEach( async ({ loginPage }) => { //before each method will run
-  
+
     await loginPage.goToLoginPage(); //goto login page
-    await loginPage.doLogin('yt@open.com','pw1234'); //perform the
+    await loginPage.doLogin('yy@open.com','pw1234'); //perform the
 
 });
 

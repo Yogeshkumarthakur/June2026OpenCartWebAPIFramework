@@ -9,7 +9,7 @@ export class LoginPage extends BasePage {
     private readonly password: Locator;
     private readonly loginBtn: Locator;
     private readonly ForgottenPasswordLink: Locator;
-    private readonly logo: Locator;
+    readonly logo: Locator;
     private readonly loginErrorMessage: Locator;
 
 
@@ -32,12 +32,12 @@ export class LoginPage extends BasePage {
         await this.page.goto('opencart/index.php?route=account/login');
         }
 
-          async getLoginPageTitle(): Promise<string> {
-          return await this.page.title();
+        async getLoginPageTitle(): Promise<string> {
+        return await this.page.title();
         }
 
-          async isForgotPasswordLinkExists(): Promise <boolean> {
-          return await this.ForgottenPasswordLink.isVisible();
+        async isForgotPasswordLinkExists(): Promise <boolean> {
+        return await this.ForgottenPasswordLink.isVisible();
         }
 
         async doLogin(username: string, password: string): Promise<void>  {

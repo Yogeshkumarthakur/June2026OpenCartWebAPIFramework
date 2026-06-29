@@ -22,11 +22,11 @@ test('login page title test', async ({loginPage}) =>  {
 
 test('forgot pwd link exists', async ({loginPage}) =>  {
     expect (await loginPage.isForgotPasswordLinkExists()).toBeTruthy();
-   });
+    });
 
 
 
-   test('user is able to login to app test', async ({ loginPage, homePage }) =>  {
+test('user is able to login to app test', async ({ loginPage, homePage }) =>  {
     await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
     expect.soft(await homePage.isLogoutLinkExists()).toBeTruthy(); // checking logout link to make sure we are on homepage
     expect.soft(await homePage.getPageTitle()).toBe('My Account'); //getPageTitle() coming from parent base page
@@ -34,9 +34,9 @@ test('forgot pwd link exists', async ({loginPage}) =>  {
 
 //DD_1: with fixtuers: running in sequencial mode: only 1 test running with test data one by one using testData fixture so avoid mainting the testdata inside fixture file
 test('login to app using wrong credentials with Data driven test', async ({ loginPage, testData }) =>  {
- for (let row of testData) {
-           await loginPage.doLogin(row.username, row.password);
-           expect(await loginPage.isForgotPasswordLinkExists()).toBeTruthy();
+for (let row of testData) {
+        await loginPage.doLogin(row.username, row.password);
+        expect(await loginPage.isForgotPasswordLinkExists()).toBeTruthy();
     }
 });
 
@@ -44,8 +44,8 @@ test('login to app using wrong credentials with Data driven test', async ({ logi
         let testData = CsvHelper.readCsv('src/data/logindata.csv');
         for(let row of testData){
             test(`invalid login test - ${row.username} - ${row.password}`, async ( {loginPage}) => {
-                 await loginPage.doLogin(row.username, row.password);
-                 expect(await loginPage.isForgotPasswordLinkExists()).toBeTruthy();
+                await loginPage.doLogin(row.username, row.password);
+                expect(await loginPage.isForgotPasswordLinkExists()).toBeTruthy();
             })
         };
 
